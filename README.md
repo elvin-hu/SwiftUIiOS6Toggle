@@ -1,4 +1,4 @@
-# iOS 6 style toggle implemented with SwiftUI
+# SwiftUI iOS 6 Style Toggle
 
 <img align="top" src="preview.gif" width="340">
 
