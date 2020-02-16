@@ -29,7 +29,7 @@ struct ContentView: View {
                 .font(.system(size: 18, weight: .bold))
                 .foregroundColor(Color(red: 111/255, green: 111/255, blue: 111/255))
                 .shadow(color: Color(red: 1, green: 1, blue: 1, opacity: 1), radius: 0, x: 0, y: -1)
-                // The "OFF" text appears at the center of the toggle on default wihtout any offset (as SwiftUI prefer to center contents),
+                // The "OFF" text appears at the center of the toggle on default without any offset (as SwiftUI prefer to center contents),
                 // to make sure it appears on the center of the toggle background area (the white area),
                 // it has has a 10 pixels of horizontal offset while the toggle is off,
                 // and it will move to the right, out of the visible area when the toggle is on.
@@ -130,7 +130,7 @@ struct ContentView: View {
                         .shadow(radius: 2)
                         .shadow(radius: 0.5)
                         .overlay(
-                            // Blurr then mask a circular stroke view for the inner shadow/stroke effect
+                            // Blur then mask a circular stroke view for the inner shadow/stroke effect
                             Circle()
                                 .stroke(Color.white, lineWidth: 2)
                                 .blur(radius: 0.5)
