@@ -14,7 +14,8 @@ struct ContentView: View {
     /// The toggle should hide the blue background when it isn't on, but show the blue background otherwise.
     /// When the knob is being dragged from off to on, the blue background should show up right away and move with it.
     @State var shouldShowBlueBackground: Bool = false
-    @State var viewDisplacement = CGSize.zero // Displacement of the knob
+    /// Displacement of the knob.
+    @State var viewDisplacement = CGSize.zero
     
     var body: some View {
         ZStack {
@@ -103,7 +104,7 @@ struct ContentView: View {
                 )
                 .opacity(0.9)
             
-            // Toggle nob - moves with the gesture
+            // Toggle knob - moves with the gesture
             Button(action: {
                 withAnimation(.easeInOut(duration: 0.25)){
                     self.isOn.toggle()
@@ -157,11 +158,11 @@ struct ContentView: View {
                         if value.translation.width < 0 {
                             self.viewDisplacement = .zero
                         }
-                        // Once the nob is dragged from the left end to the right end, the UI elements should stop moving
+                        // Once the knob is dragged from the left end to the right end, the UI elements should stop moving
                         else if value.translation.width > 60 {
                             self.viewDisplacement.width = 60
                         }
-                        // If the nob is between the left end and the right end, assign the current translation of the gesture to viewDisplacement,
+                        // If the knob is between the left end and the right end, assign the current translation of the gesture to viewDisplacement,
                         // so the UI elements would move along with the gesture.
                         else {
                             self.viewDisplacement = value.translation
@@ -173,11 +174,11 @@ struct ContentView: View {
                         if value.translation.width > 0 {
                             self.viewDisplacement = .zero
                         }
-                        // Once the nob is dragged from the right end to the left end, the UI elements should stop moving
+                        // Once the knob is dragged from the right end to the left end, the UI elements should stop moving
                         else if value.translation.width < -60 {
                             self.viewDisplacement.width = -60
                         }
-                        // If the nob is between the left end and the right end, assign the current translation of the gesture to viewDisplacement
+                        // If the knob is between the left end and the right end, assign the current translation of the gesture to viewDisplacement
                         // so the UI elements would move along with the gesture.
                         else {
                             self.viewDisplacement = value.translation
@@ -186,14 +187,14 @@ struct ContentView: View {
                 }
                 .onEnded { value in
                     withAnimation(.easeInOut(duration: 0.25)) {
-                        // If the nob is dragged for a distance longer than half of the width of the toggle, change the state of the toggle
+                        // If the knob is dragged for a distance longer than half of the width of the toggle, change the state of the toggle
                         if !self.isOn && value.translation.width > 30 || self.isOn && value.translation.width < -30 {
                             self.isOn.toggle()
                         }
                         // Reset the position of the toggle to its new default position after the change of state
                         self.viewDisplacement = .zero
                     }
-                    // Hide the blue background if the toggle is off at the end of the gesture, so that there wouldn't be a blue stroke/halo around the nob visible
+                    // Hide the blue background if the toggle is off at the end of the gesture, so that there wouldn't be a blue stroke/halo around the knob visible
                     if !self.isOn {
                         withAnimation(Animation.easeInOut(duration: 0.25).delay(0.125)) {
                             self.shouldShowBlueBackground = false
