@@ -1,6 +1,6 @@
 # iOS 6 style toggle implemented with SwiftUI
 
-<img align="left" src="preview.gif" width="280">
+<img align="top" src="preview.gif" width="340">
 
 Please do not use this toggle in a "serious" project. 
 
